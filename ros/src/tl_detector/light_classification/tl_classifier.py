@@ -4,7 +4,7 @@ import numpy as np
 import tensorflow as tf
 
 class TLClassifier(object):
-    def __init__(self):
+    def __init__(self, frozen_model):
         #TODO load classifier
         # pass
         self.detection_graph = tf.Graph()
@@ -52,13 +52,13 @@ class TLClassifier(object):
             
             for i in range(boxes.shape[0]):
                 if scores is None or scores[i] > self.min_score_threshold:
-                    if 1 == class[i];
+                    if 1 == classes[i]:
                         rospy.loginfo('Light Detected: GREEN')
                         light_state = TrafficLight.GREEN
-                    elif 2 == class[i];
+                    elif 2 == classes[i]:
                         rospy.loginfo('Light Detected: RED')
                         light_state = TrafficLight.RED
-                    elif 3 == class[i];
+                    elif 3 == classes[i]:
                         rospy.loginfo('Light Detected: YELLOW')
                         light_state = TrafficLight.YELLOW
                     else:
