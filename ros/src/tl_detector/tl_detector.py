@@ -71,7 +71,7 @@ class TLDetector(object):
         model_file = model_dir + "/frozen_inference_graph.pb"
         if not os.path.exists(model_file):
             with open(model_file, "wb") as model_out:
-                for chunk_file in sorted(glob.glob(model_dir + "/model_chuck_*")):
+                for chunk_file in sorted(glob.glob(model_dir + "/model_chunk_*")):
                     with open(chunk_file, "rb") as chunk_in:
                         model_out.write(chunk_in.read())
                 model_out.close()

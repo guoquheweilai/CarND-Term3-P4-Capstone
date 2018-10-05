@@ -15,7 +15,7 @@ class TLClassifier(object):
             with tf.gfile.GFile(frozen_model, 'rb') as fid:
                 serialized_graph = fid.read()
                 od_graph_def.ParseFromString(serialized_graph)
-                tf.import_graph_def(od_graph_def, name = '')
+                tf.import_graph_def(od_graph_def, name='')
                 rospy.loginfo("loaded graph from frozen model")
             self.image_tensor = self.detection_graph.get_tensor_by_name('image_tensor:0')
             self.d_boxes = self.detection_graph.get_tensor_by_name('detection_boxes:0')
